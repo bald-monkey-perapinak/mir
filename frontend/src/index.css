@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #F2F2F2;
+  font-family: 'Inter', Arial, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior: none;
+}
+
+/* Telegram WebApp body */
+body.tg-mode {
+  background: var(--tg-theme-bg-color, #F2F2F2);
+  color: var(--tg-theme-text-color, #111111);
+}
+
+/* Smooth slide-up animation for feedback popup */
+@keyframes slideUp {
+  from { transform: translateY(100%); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+.slide-up { animation: slideUp 300ms ease-out; }
+
+/* Progress bar fill animation */
+@keyframes fillBar {
+  from { width: 0; }
+}
+.progress-fill { animation: fillBar 400ms ease; }
+
+/* Drag handle cursor */
+.drag-handle { cursor: grab; }
+.drag-handle:active { cursor: grabbing; }

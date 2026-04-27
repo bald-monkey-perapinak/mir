@@ -1,0 +1,63 @@
+<svg viewBox="0 0 320 580" xmlns="http://www.w3.org/2000/svg" font-family="Inter, Arial, sans-serif">
+  <rect width="320" height="580" rx="32" fill="#1A1A2E"/>
+  <rect x="8" y="8" width="304" height="564" rx="26" fill="#F2F2F2"/>
+
+  <!-- Status bar -->
+  <rect x="8" y="8" width="304" height="40" rx="26" fill="#1A3ED4"/>
+  <rect x="8" y="34" width="304" height="14" fill="#1A3ED4"/>
+  <text x="30" y="30" fill="white" font-size="11" font-weight="600">9:41</text>
+  <text x="255" y="30" fill="white" font-size="10">●●●</text>
+
+  <!-- Header -->
+  <rect x="8" y="48" width="304" height="60" fill="#1A3ED4"/>
+  <text x="44" y="74" fill="white" font-size="14" font-weight="700">Протокол сепсиса</text>
+  <text x="44" y="92" fill="#B3C4F7" font-size="11">Задание 3 из 12</text>
+  <text x="28" y="78" fill="white" font-size="16">←</text>
+
+  <!-- Progress -->
+  <rect x="8" y="108" width="304" height="6" fill="#E8EDFB"/>
+  <rect x="8" y="108" width="76" height="6" fill="#1A3ED4"/>
+
+  <!-- Body -->
+  <rect x="8" y="114" width="304" height="458" fill="#F2F2F2"/>
+
+  <!-- Visual hint - patient illustration area -->
+  <rect x="20" y="130" width="280" height="160" rx="16" fill="#E8EDFB"/>
+  <!-- Simple patient illustration -->
+  <circle cx="160" cy="175" r="35" fill="#B3C4F7"/>
+  <circle cx="160" cy="168" r="22" fill="#C4A882"/>
+  <rect x="138" y="187" width="44" height="40" rx="10" fill="#4A7FE8"/>
+  <!-- Smile -->
+  <path d="M150 175 Q160 185 170 175" stroke="#555" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <!-- Eyes closed happy -->
+  <path d="M153 163 Q157 160 161 163" stroke="#555" stroke-width="1.5" fill="none"/>
+  <path d="M163 163 Q167 160 171 163" stroke="#555" stroke-width="1.5" fill="none"/>
+  <!-- Heartbeat icon -->
+  <text x="160" y="248" fill="#1A3ED4" font-size="12" text-anchor="middle" font-weight="600">💓 Пациент стабилен</text>
+  <text x="160" y="268" fill="#888" font-size="11" text-anchor="middle">АД нормализовалось</text>
+  <text x="160" y="284" fill="#888" font-size="11" text-anchor="middle">ЧСС 88 уд/мин</text>
+
+  <!-- Feedback panel -->
+  <rect x="8" y="310" width="304" height="262" rx="0" fill="white"/>
+  <rect x="8" y="310" width="304" height="20" rx="16" fill="white"/>
+  <!-- Handle -->
+  <rect x="142" y="318" width="36" height="4" rx="2" fill="#DDD"/>
+
+  <!-- Score badge -->
+  <rect x="28" y="342" width="90" height="28" rx="14" fill="#E8F5E9"/>
+  <text x="73" y="361" fill="#1E8C45" font-size="12" font-weight="700" text-anchor="middle">✅ +10 баллов</text>
+
+  <text x="28" y="392" fill="#111" font-size="15" font-weight="700">Верно!</text>
+  <text x="28" y="414" fill="#444" font-size="12">Болюс кристаллоидов — первый</text>
+  <text x="28" y="430" fill="#444" font-size="12">приоритет при септическом шоке.</text>
+  <text x="28" y="452" fill="#444" font-size="12">Протокол Surviving Sepsis Campaign:</text>
+  <text x="28" y="468" fill="#444" font-size="12">30 мл/кг за 3 часа при АД &lt; 100.</text>
+
+  <!-- Reference -->
+  <rect x="28" y="480" width="264" height="28" rx="8" fill="#F7F8FF"/>
+  <text x="40" y="499" fill="#1A3ED4" font-size="11">📖 SSC Guidelines 2021, раздел 3.4</text>
+
+  <!-- Next button -->
+  <rect x="20" y="522" width="280" height="46" rx="14" fill="#1A3ED4"/>
+  <text x="160" y="550" fill="white" font-size="14" font-weight="700" text-anchor="middle">Следующее задание →</text>
+</svg>
