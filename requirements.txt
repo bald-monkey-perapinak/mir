@@ -25,6 +25,5 @@ langchain==0.3.4
 langchain-core>=0.3.15         # Совместимо с langchain-groq
 langchain-groq==0.2.1          # Groq — бесплатно, работает в России
 
-# ── Локальные эмбеддинги (без внешних API) ────────────────────────────────
-sentence-transformers==3.3.1   # intfloat/multilingual-e5-small (117MB, 384 dim)
-torch==2.4.1                   # CPU-only достаточно
+# ── Локальные эмбеддинги (fastembed = ONNX, быстрый старт, без torch) ────
+fastembed==0.3.6               # intfloat/multilingual-e5-small через ONNX Runtime

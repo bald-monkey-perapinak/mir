@@ -1,5 +1,6 @@
 import logging
 import os
+import asyncio
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
@@ -15,12 +16,44 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
+async def _prewarm() -> None:
+    """
+    Фоновая задача: компилирует LangGraph-графы и загружает модель эмбеддингов
+    сразу при старте, чтобы первый реальный запрос не тормозил.
+    """
+    try:
+        # 1. Компилируем все три LangGraph-графа (каждый ~0.1–0.3 с)
+        from app.processor import _get_graph as _doc_graph
+        from app.scenario_generator import _get_graph as _scen_graph
+        from app.training_engine import _get_graph as _engine_graph
+
+        _doc_graph()
+        _scen_graph()
+        _engine_graph()
+        logger.info("[prewarm] LangGraph graphs compiled ✓")
+
+        # 2. Загружаем ONNX-модель эмбеддингов (fastembed, ~0.3 с)
+        #    Запускаем в потоке, чтобы не блокировать event loop
+        from app.llm import embeddings
+        emb = embeddings()
+        await asyncio.to_thread(emb._load)
+        logger.info("[prewarm] Embedding model loaded ✓")
+
+    except Exception as exc:  # не роняем приложение из-за прогрева
+        logger.warning(f"[prewarm] non-fatal error: {exc}")
+
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     logger.info("Starting up — initialising database…")
     await init_db()
     os.makedirs(settings.UPLOAD_DIR, exist_ok=True)
     logger.info("Database initialised.")
+
+    # Запускаем прогрев параллельно — API уже принимает запросы,
+    # а модели грузятся в фоне (обычно готовы через ~1 с после старта)
+    asyncio.create_task(_prewarm())
+
     logger.info("API ready.")
     yield
     logger.info("Shutting down.")
