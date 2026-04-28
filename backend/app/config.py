@@ -20,7 +20,7 @@ class Settings(BaseSettings):
     GROQ_API_KEY: str = ""
     GROQ_MODEL:   str = "llama-3.1-8b-instant"
 
-    EMBEDDING_MODEL: str = "intfloat/multilingual-e5-small"
+    EMBEDDING_MODEL: str = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
     EMBEDDING_DIM:   int = 384
 
     UPLOAD_DIR:       str = "/app/uploads"

@@ -19,11 +19,10 @@ RUN --mount=type=cache,target=/root/.cache/pip \
 # ── Предзагрузка ONNX-модели эмбеддингов в слой Docker ───────────────────
 # fastembed скачивает модель (~25 МБ) один раз при сборке;
 # при запуске контейнера модель уже на диске — старт мгновенный
-RUN --mount=type=cache,target=/root/.cache/pip \
-    python -c "\
+RUN python -c "\
 from fastembed import TextEmbedding; \
-print('Downloading intfloat/multilingual-e5-small (ONNX)...'); \
-TextEmbedding('intfloat/multilingual-e5-small', cache_dir='/app/fastembed_cache'); \
+print('Downloading paraphrase-multilingual-MiniLM-L12-v2 (ONNX)...'); \
+TextEmbedding('sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2', cache_dir='/app/fastembed_cache'); \
 print('Model cached OK')"
 
 COPY . .
