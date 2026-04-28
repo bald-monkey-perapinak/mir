@@ -51,11 +51,13 @@ class LocalEmbeddings:
 
     def _load(self):
         if self._model is None:
+            import os
             from fastembed import TextEmbedding
+            cache_dir = os.getenv("FASTEMBED_CACHE_DIR", "/tmp/fastembed_cache")
             logger.info(f"[embeddings] loading model {self._model_name}…")
             self._model = TextEmbedding(
                 model_name=self._model_name,
-                cache_dir="/tmp/fastembed_cache",   # фиксируем путь к кэшу
+                cache_dir=cache_dir,
             )
             logger.info("[embeddings] model ready")
 
